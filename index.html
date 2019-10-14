@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Grammar Site: A Test</title>
+  </head>
+  <body>
+    <h1>Test your Grammar</h1>
+    <p>Complete the following sentence with the verb in the correct form:</p>
+
+    <form name='cloze' action="" method="get">
+      <p><span id="checkbox">[ ]</span> I <input type='text' id='attempt' name='attempt' value='' form='cloze' required maxlength="20" /> to code for about six months now.
+        </p>
+      <button name='submit' form='cloze' value='' onclick="checkAnswer(getElementById('attempt').value)">Check</button>
+    </form>
+
+    <script type='text/javascript' src='main.js'></script>
+  </body>
+</html>
