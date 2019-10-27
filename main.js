@@ -1,55 +1,101 @@
-// TO SOLVE
-// add form to each question
-// grab input from each unique question using event listener for 'submit'
-    // hitting enter or button
-// access answer from array
-// output check or x to unique question
-// display base of verb to use
-  //display as placeholder text? add base verb to answers array--make into object?
+// TO TO
+// create form with button at end
+// change checkAnswer function to display ticks or exes beside sentence
 
-// Sub arr index matches input-number ID and checkbox ID
-const answers = [
-  ["have been learning", "'ve been learning"],
-  ["has never seen", "'s never seen"],
-  ["has read", "'s read"],
-  ["have known", "'ve known"],
-  ["has been crying", "'s been crying"],
-  ["have had", "'ve had"],
-  ["have seen", "'ve seen"],
-  ["has been washed", "'s been washed"],
+// header is transparent!
+
+
+
+const sentences = [
+  {
+    s: "I",
+    v: ["have been learning", "'ve been learning"],
+    o: "English for five years.",
+    baseVerb: "learn",
+    tag: "present perfect"
+  },
+  {
+    s: "She",
+    v: ["has never seen", "'s never seen"],
+    o: "snow.",
+    baseVerb: "see",
+    tag: "present perfect"
+  },
+  {
+    s: "Andrew",
+    v: ["has seen", "'s seen"],
+    o: "Harry Potter five times.",
+    baseVerb: "see",
+    tag: "present perfect"
+  },
+  {
+    s: "They",
+    v: ["have known", "'ve known"],
+    o: "each other for five years.",
+    baseVerb: "know",
+    tag: "present perfect"
+  },
+  {
+    s: "The car",
+    v: ["has been washed", "'s been washed"],
+    o: ". It is clean now.",
+    baseVerb: "wash",
+    tag: "present perfect"
+  }
 ];
 
+// Generates list of clozed sentences with unique id
+(function populateList() {
+  var node;
+  var input;
+  var subject;
+
+  for (let i = 0; i < sentences.length; i++) {
+    // Creates new <li> node and adds input field with unique id
+    node = document.createElement("LI");
+    node.setAttribute("id", `sentence-${i}`);
+
+    // Creates new input box and sets attributes
+    input = document.createElement("INPUT");
+    input.type = "text";
+    input.setAttribute("class", "cloze")
+    input.setAttribute("id", `input-${i}`);
+    input.setAttribute("name", `input-${i}`);
+    input.setAttribute("placeholder", sentences[i].baseVerb);
+    input.setAttribute("maxlength", "20");
+
+    // Create text bits
+    before = document.createTextNode(sentences[i].s
+    + " ");
+    after = document.createTextNode(" " + sentences[i].o);
+
+    // Appends everything to <li>
+    node.appendChild(before);
+    node.appendChild(input);
+    node.appendChild(after);
+    document.querySelector(".sentence-list").appendChild(node);
+  }
+})();
+
 // Grabs all answer input fields
-const clozeInput = [...document.querySelectorAll('.attempt')];
+const clozeInput = [...document.querySelectorAll('cloze')];
 
-// Gives each input element a unique ID which matches answer subarray
-(function numberInput() {
+// i is the sentence number; plugs i into checkAnswer
+(function eventHandler() {
   for (let i = 0; i < clozeInput.length; i++) {
-    clozeInput[i].setAttribute("data-sentence", i);
+    clozeInput[i].addEventListener('input', checkAnswer(i, ans));
   }
 })();
 
-// Does the same to the checkboxes
-(function numberCheckboxes() {
-  const checkboxes = [...document.querySelectorAll('.checkbox')];
-
-  for (let i = 0; i < checkboxes.length; i++) {
-    checkboxes[i].setAttribute("id", "checkbox-" + i);
-  }
-})();
-
-// Listen for input from user (need to loop through all elements)
-(function inputHandler(e) {
-  clozeInput.addEventListener('input', checkAnswer());
-})();
-
+// num is sentence number, passed from i in addEventListeners() function
 function checkAnswer(ans) {
-//   // Grab data-sentence value for sentence number
-//   // if (answers[sentence number].includes(ans)) {
-//   //   tickBox();
-//   // } else {
-//   //   exBox();
-//   // }
+  if (answers[num].includes(ans)) {
+    // tickBox();
+    console.log("Correct!");
+  } else {
+    // exBox();
+    console.log("Nope!");
+  }
 }
 
 function tickBox() {
