@@ -37,6 +37,7 @@ a:active {
   height: 50px;
   display: flex;
   justify-content: center;
+  background-color: white;
 }
 
 .nav-links {
