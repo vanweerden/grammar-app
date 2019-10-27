@@ -71,6 +71,10 @@ li {
   margin-top: 1.5em;
 }
 
+#btn {
+  margin-top: 1em;
+}
+
 .profile {
   width: 100%;
   border-bottom: 2px solid #DDD;
