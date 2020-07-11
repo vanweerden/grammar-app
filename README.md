@@ -1,2 +1,2 @@
 # grammar-app
-An app that lets users drill grammar via gap-fill/cloze-style sentences. A work-in-progress.
+I eventually want to create an app that lets users drill Enlgish grammar via gap-fill/cloze-style sentences. This is just a tiny experiment.
